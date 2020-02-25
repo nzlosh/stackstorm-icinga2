@@ -1,0 +1,12 @@
+---
+name: get_host
+runner_type: "python-script"
+description: Get all Icinga2 host objects, or individual host
+enabled: true
+entry_point: get_host.py
+parameters:
+  host:
+    type: "string"
+    required: false
+    description: "Specific host object to return. If not specified, all hosts are returned."
+    default: ''

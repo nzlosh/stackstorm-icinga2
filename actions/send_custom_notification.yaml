@@ -1,12 +1,32 @@
 ---
-name: get_host
+name: send_custom_notification
 runner_type: "python-script"
-description: Get all Icinga2 host objects, or individual host
+description: Send a custom notification for hosts and services.
 enabled: true
-entry_point: get_host.py
+entry_point: send_custom_notification.py
 parameters:
-  host:
-    type: "string"
+  object_type:
+    description: Host or Service
+    type: string
+    required: true
+  filters:
+    description: filters matched object
+    type: string
+    required: true
+  author:
+    description: name of the author
+    type: string
+    required: true
+  comment:
+    description: comment text
+    type: string
+    required: true
+  force:
+    description: ignore downtimes and notification settings
+    type: boolean
+    default: false
     required: false
-    description: "Specific host object to return. If not specified, all hosts are returned."
-    default: ''
+  filter_vars:
+    description: variables used in the filters expression
+    type: object
+    required: false

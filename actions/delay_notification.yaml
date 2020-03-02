@@ -1,12 +1,23 @@
 ---
-name: get_host
+name: delay_notification
 runner_type: "python-script"
-description: Get all Icinga2 host objects, or individual host
+description: Delay notifications for a host or a service.
 enabled: true
-entry_point: get_host.py
+entry_point: delay_notification.py
 parameters:
-  host:
-    type: "string"
+  object_type:
+    description: Host or Service
+    type: string
+    required: true
+  filters:
+    description: filters matched object(s)
+    type: string
+    required: true
+  timestamp:
+    description: timestamp to delay the notifications to
+    type: number
+    required: true
+  filter_vars:
+    description: variables used in the filters expression
+    type: object
     required: false
-    description: "Specific host object to return. If not specified, all hosts are returned."
-    default: ''

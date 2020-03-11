@@ -1,12 +1,35 @@
 ---
-name: get_host
+name: acknowledge_problem
 runner_type: "python-script"
-description: Get all Icinga2 host objects, or individual host
+description: Acknowledge a Service or Host problem.
 enabled: true
-entry_point: get_host.py
+entry_point: acknowledge_problem.py
 parameters:
-  host:
-    type: "string"
-    required: false
-    description: "Specific host object to return. If not specified, all hosts are returned."
-    default: ''
+  object_type:
+    description: Host or Service
+    type: string
+    required: true
+  filters:
+    description:  filters matched object(s)
+    type: string
+    requried: true
+  author:
+    description: name of the author
+    type: string
+    requried: true
+  comment:
+    description: comment text
+    type: string
+    requried: true
+  filter_vars:
+    description: variables used in the filters expression
+    type: object
+  expiry:
+    description: acknowledgement expiry timestamp
+    type: integer
+  sticky:
+    description: stay till full problem recovery
+    type: boolean
+  notify:
+    description: send notification
+    type: string

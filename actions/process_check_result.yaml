@@ -8,18 +8,22 @@ parameters:
   object_type:
     description: Host or Service
     type: string
+    required: true
   name:
     description: name of the object
     type: string
+    required: true
   exit_status:
-    description: services: 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN; hosts: 0=OK, 1=CRITICAL
+    description: "services: 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN; hosts: 0=OK, 1=CRITICAL"
     type: integer
+    required: true
   plugin_output:
     description: plugins main ouput
     type: string
+    required: true
   check_command:
     description: check command path followed by its arguments
     type: array
   check_source:
     description: name of the command_endpoint
-    check_source: string
+    type: string

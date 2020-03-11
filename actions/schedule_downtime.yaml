@@ -1,12 +1,44 @@
 ---
-name: get_host
+name: schedule_downtime
 runner_type: "python-script"
-description: Get all Icinga2 host objects, or individual host
+description: Schedule a downtime for hosts and services.
 enabled: true
-entry_point: get_host.py
+entry_point: schedule_downtime.py
 parameters:
-  host:
-    type: "string"
-    required: false
-    description: "Specific host object to return. If not specified, all hosts are returned."
-    default: ''
+  object_type:
+    description: Host or Service
+    type: string
+    required: true
+  filters:
+    description: filters matched object(s)
+    type: string
+    required: true
+  author:
+    description: name of the author
+    type: string
+    required: true
+  comment:
+    description: comment text
+    type: string
+    required: true
+  start_time:
+    description: timestamp marking the beginning
+    type: string
+    required: true
+  end_time:
+    description: timestamp marking the end
+    type: string
+    required: true
+  duration:
+    description: duration of the downtime in seconds
+    type: integer
+    required: true
+  filter_vars:
+    description: variables used in the filters expression
+    type: object
+  fixed:
+    description: fixed or flexible downtime
+    type: boolean
+  trigger_name:
+    description: trigger for the downtime
+    type: string

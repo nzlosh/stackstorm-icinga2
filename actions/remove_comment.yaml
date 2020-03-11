@@ -1,12 +1,22 @@
 ---
-name: get_host
+name: remove_comment
 runner_type: "python-script"
-description: Get all Icinga2 host objects, or individual host
+description: Remove a comment using its name or filters.
 enabled: true
-entry_point: get_host.py
+entry_point: remove_comment.py
 parameters:
-  host:
-    type: "string"
-    required: false
-    description: "Specific host object to return. If not specified, all hosts are returned."
-    default: ''
+  object_type:
+    description: Host, Service or Comment
+    type: string
+    required: true
+  name:
+    description: name of the Comment
+    type: string
+    required: true
+  filters:
+    description: filters matched object(s)
+    type: string
+    required: true
+  filter_vars:
+    description: variables used in the filters expression
+    type: object

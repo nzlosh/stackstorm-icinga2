@@ -1,12 +1,26 @@
 ---
-name: get_host
+name: add_comment
 runner_type: "python-script"
-description: Get all Icinga2 host objects, or individual host
+description: Add a comment from an author to services or hosts.
 enabled: true
-entry_point: get_host.py
+entry_point: add_comment.py
 parameters:
-  host:
-    type: "string"
-    required: false
-    description: "Specific host object to return. If not specified, all hosts are returned."
-    default: ''
+  object_type:
+    description: Host or Service
+    type: string
+    required: true
+  filters:
+    description: filters matched object(s)
+    type: string
+    required: true
+  author:
+    description: name of the author
+    type: string
+    required: true
+  comment:
+    description: comment text
+    type: string
+    required: true
+  filter_vars:
+    description: variables used in the filters expression
+    type: object

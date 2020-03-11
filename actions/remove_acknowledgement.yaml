@@ -1,12 +1,19 @@
 ---
-name: get_host
+name: remove_acknowledgement
 runner_type: "python-script"
-description: Get all Icinga2 host objects, or individual host
+description: Remove the acknowledgement for services or hosts.
 enabled: true
-entry_point: get_host.py
+entry_point: remove_acknowledgement.py
 parameters:
-  host:
-    type: "string"
-    required: false
-    description: "Specific host object to return. If not specified, all hosts are returned."
-    default: ''
+  object_type:
+    description: Host or Service
+    type: string
+    required: true
+  filters:
+    description: filters matched object(s)
+    type: string
+    required: true
+  filter_vars:
+    description: variables used in the filters expression
+    type: object
+

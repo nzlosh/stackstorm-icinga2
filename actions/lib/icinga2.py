@@ -32,9 +32,7 @@ class Icinga2Action(Action):
         elif certificate is not None and certificate:
             key = self.myconfig.get("key", "")
             ca_certificate = self.myconfig.get("ca_certificate", "")
-            return Client(
-                api_url, certificate=certificate, key=key, ca_certificate=ca_certificate
-            )
+            return Client(api_url, certificate=certificate, key=key, ca_certificate=ca_certificate)
         else:
             raise ValueError(
                 "Failed finding authentication method\n \
